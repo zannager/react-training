@@ -27,7 +27,7 @@ import { render } from '@testing-library/react';
 //       </header>
 //     </div>
 
-class App extends Component {
+class App extends Component{ 
   constructor(props) {
     super(props)
     // state
@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://api.randomuser.me/?nat=US$result=5')
+    axios.get('https://api.randomuser.me')
     .then(response => {
       console.log(response);
       this.setState({users: response.data.results});
@@ -48,7 +48,11 @@ class App extends Component {
   }
 
   render() {
-    return <div className='App'>Learning is fun</div>
+    return <div className='App'>
+      {this.state.users.map(user => (
+            <li key={user.login.uuid}>{user.name.first} {user.name.last}</li>
+          ))}
+      </div>
   }
 }
 
