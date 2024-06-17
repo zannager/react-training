@@ -49,9 +49,13 @@ class App extends Component{
 
   render() {
     return <div className='App'>
+      <h1>Hello World</h1>
+      <ul>
       {this.state.users.map(user => (
             <li key={user.login.uuid}>{user.name.first} {user.name.last}</li>
           ))}
+      </ul>
+    
       </div>
   }
 }
