@@ -62,15 +62,17 @@ class App extends Component{
   }
 
   render() {
+    const {loading, users} = this.state
     return <div className='App'>
       <h1>Hello World</h1>
-      {!this.state.loading ? this.state.users.map(user => 
-        <div>
-        <h1>{user.name.first}</h1>
-        <p>{user.email}</p>
-        <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
           <input type='submit' value='load users' />
         </form>
+      {!loading ? users.map(user => 
+        <div key={user.login.uuid}>
+        <h1 style={{color: 'red'}}>{user.name.first}</h1>
+        <p>{user.email}</p>
+      
         </div>)
         : <Loading message="nice nice" />}
     
