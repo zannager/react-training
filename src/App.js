@@ -36,6 +36,10 @@ class App extends Component{
     }
   }
 
+  // getUsers() {
+
+  // }
+
   componentDidMount() {
     axios.get('https://api.randomuser.me')
     .then(response => {
@@ -50,7 +54,11 @@ class App extends Component{
   render() {
     return <div className='App'>
       <h1>Hello World</h1>
-      {this.state.users.map(user => <div>{user.cell}</div>)}
+      {this.state.users.map(user => 
+        <div>
+        <h1>{user.name.first}</h1>
+        <p>{user.email}</p>
+        </div>)}
     
       </div>
   }
