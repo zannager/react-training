@@ -6,6 +6,7 @@ import { useState } from "react";
 import ReactDOM from "react-dom/client";
 import axios from 'axios';
 import { render } from '@testing-library/react';
+import Loading from './Loading'
 
 
 // function App() {
@@ -60,7 +61,7 @@ class App extends Component{
         <h1>{user.name.first}</h1>
         <p>{user.email}</p>
         </div>)
-        : 'loading'}
+        : <Loading message="nice nice" />}
     
       </div>
   }
