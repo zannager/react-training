@@ -32,33 +32,35 @@ class App extends Component{
     super(props)
     // state
     this.state = {
-      users: []
+      users: [],
+      loading: false
     }
   }
 
-  // getUsers() {
-
-  // }
+  getUsers() {
+    this.setState({
+      loading: true
+    })
+    axios.get('https://api.randomuser.me').then(response =>  this.setState({
+      users: response.data.results,
+      loading: false
+      })
+    );
+  }
 
   componentDidMount() {
-    axios.get('https://api.randomuser.me')
-    .then(response => {
-      console.log(response);
-      this.setState({users: response.data.results});
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
+    this.getUsers();
   }
 
   render() {
     return <div className='App'>
       <h1>Hello World</h1>
-      {this.state.users.map(user => 
+      {!this.state.loading ? this.state.users.map(user => 
         <div>
         <h1>{user.name.first}</h1>
         <p>{user.email}</p>
-        </div>)}
+        </div>)
+        : 'loading'}
     
       </div>
   }
