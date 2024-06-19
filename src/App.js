@@ -87,7 +87,7 @@ const App = () => {
 
   useEffect(() => {
     document.title = `Clicked ${count} times`
-  })
+  });
 
   const increment = () => {
     setCount(count + 1);
