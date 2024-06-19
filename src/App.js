@@ -1,5 +1,5 @@
 // import React from 'react';
-import React, { Component, useState } from 'react'; 
+import React, { Component, useState, useEffect } from 'react'; 
 // import logo from './logo.svg';
 // import './App.css';
 // import { useState } from "react";
@@ -83,7 +83,11 @@ import { render } from '@testing-library/react';
 // export default App;
 
 const App = () => {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `Clicked ${count} times`
+  })
 
   const increment = () => {
     setCount(count + 1);
@@ -104,6 +108,14 @@ const App = () => {
 //     this.setState({
 //       count: this.state.count + 1
 //     })
+//   }
+
+//   componentDidMount() {
+//     document.title = `Clicked ${this.state.count} times`
+//   }
+
+//   componentDidUpdate() {
+//     document.title = `Clicked ${this.state.count} times`
 //   }
 //   render() {
 //     return(
