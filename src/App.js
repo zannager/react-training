@@ -1,8 +1,8 @@
 // import React from 'react';
-import React, { Component } from 'react'; 
+import React, { Component, useState } from 'react'; 
 // import logo from './logo.svg';
 // import './App.css';
-import { useState } from "react";
+// import { useState } from "react";
 import ReactDOM from "react-dom/client";
 import axios from 'axios';
 import { render } from '@testing-library/react';
@@ -82,24 +82,38 @@ import { render } from '@testing-library/react';
 
 // export default App;
 
-class App extends Component {
-  state = {
-    count: 0
-  }
-  increment = () => {
-    this.setState({
-      count: this.state.count + 1
-    })
-  }
-  render() {
-    return(
-      <div>
-        <h2>counter app</h2>
-        <button onClick={this.increment}>Clicked {this.state.count} times</button>
-      </div>
+const App = () => {
+  const [count, setCount] = useState(0)
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+  return(
+          <div>
+            <h2>counter app</h2>
+            <button onClick={increment}>Clicked {count} times</button>
+          </div>
+        );
+};
+
+// class App extends Component {
+//   state = {
+//     count: 0
+//   }
+//   increment = () => {
+//     this.setState({
+//       count: this.state.count + 1
+//     })
+//   }
+//   render() {
+//     return(
+//       <div>
+//         <h2>counter app</h2>
+//         <button onClick={this.increment}>Clicked {this.state.count} times</button>
+//       </div>
       
-    );
-  }
-}
+//     );
+//   }
+// }
 
 export default App;
